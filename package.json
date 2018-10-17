@@ -1,8 +1,12 @@
 {
   "name": "xrtd-js",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vol4tim/xrtd-js.git"
+  },
   "bin": {
     "xrtd-js": "./dist/cli.js"
   },
