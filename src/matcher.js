@@ -1,17 +1,21 @@
 import _ from 'lodash'
-import md5 from 'md5'
+import { getRobonomics } from './utils'
+
+const hash = (data) => {
+  return getRobonomics().web3.sha3(data.join())
+}
 
 let asks = {}
 let bids = {}
 export default (ask = null, bid = null) => {
   let h
   if (bid) {
-    h = md5([bid.model, bid.objective, bid.token, bid.cost])
+    h = hash([bid.model, bid.objective, bid.token, bid.cost])
     if (!_.has(bids, h)) {
       bids[h] = bid
     }
   } else {
-    h = md5([ask.model, ask.objective, ask.token, ask.cost])
+    h = hash([ask.model, ask.objective, ask.token, ask.cost])
     if (!_.has(asks, h)) {
       asks[h] = ask
     }
